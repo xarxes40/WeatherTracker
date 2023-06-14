@@ -8,7 +8,7 @@ class ConnectionAttributes
 {
 public:
 	ConnectionAttributes();
-	~ConnectionAttributes();
+	virtual ~ConnectionAttributes();
 
 	boost::asio::io_context ioc;
 	boost::asio::ip::tcp::resolver resolver;

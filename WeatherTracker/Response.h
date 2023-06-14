@@ -7,14 +7,15 @@
 class Response
 {
 public:
+	Response() = delete;
 	Response(std::string response);
-	~Response();
+	virtual ~Response();
 
-	std::string get_response();
-	float get_currency_value(std::string currency);
+	void check_response();
+	virtual std::string get_result() = 0;
 
 private:
-	float find_currency_XML(std::string currency);
+	virtual std::string parse_json() = 0;
 private:
 	std::string response;
 };
