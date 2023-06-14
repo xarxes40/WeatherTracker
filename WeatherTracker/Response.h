@@ -16,6 +16,7 @@ public:
 
 private:
 	virtual std::string parse_json() = 0;
+	virtual std::string parse_xml() = 0;
 private:
 	std::string response;
 };
