@@ -13,12 +13,9 @@
 class Request
 {
 public:
-	Request();
-	Request(std::string api); // Распарсить строку (реализовать)
+	Request() = delete;
+	Request(std::string api); 
 	~Request();
-	
-	void set_api(std::string api); // Распарсить строку (как в конструкторе)
-	std::string get_api();
 
 	std::string get_response();
 

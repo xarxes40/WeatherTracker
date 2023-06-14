@@ -3,39 +3,22 @@
 namespace http = boost::beast::http;
 
 
-// Конструкторы и деструкторы --------------------------------------------------
-Request::Request()
-	: host("www.cbr.ru"), target("/scripts/XML_daily.asp"), attrs(new ConnectionAttributes())
-{
-    std::cout << "Client created with API: " << host + target << std::endl;
-}
-
+// Kонструкторы и деструкторы --------------------------------------------------
 Request::Request(std::string api)
-    : host(api.substr(0, api.find('/'))), target(api.substr(api.find('/')))
+    : host(api.substr(0, api.find('/'))), 
+    target(api.substr(api.find('/'))), 
+    attrs(new ConnectionAttributes())
 {
-    std::cout << "Client created with API: " << host + target << std::endl;
+    std::cout << "Request created with API: " << host + target << std::endl;
 }
 
 Request::~Request()
 {
     delete attrs;
-    std::cout << "Client deleted" << std::endl;
+    std::cout << "Request deleted" << std::endl;
 }
 
 // Открытые методы -------------------------------------------------------------------
-
-void Request::set_api(std::string api)
-{
-    size_t separation_point = api.find('/');
-    this->host = api.substr(0, separation_point);
-    this->target = api.substr(separation_point);
-}
-
-std::string Request::get_api()
-{
-    return this->host + this->target;
-}
-
 std::string Request::get_response()
 {
     send_request();
